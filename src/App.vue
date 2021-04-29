@@ -7,8 +7,16 @@
 </template>
 
 <style lang="less">
+@font-face {
+  font-family: 'RubikMedium', sans-serif;
+  src: url('~@/assets/fonts/Rubik-Medium.ttf');
+}
+body {
+  font-family: 'RubikMedium', sans-serif;
+  background-color: #e5e5e5;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'RubikMedium', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
