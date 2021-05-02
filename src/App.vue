@@ -1,8 +1,23 @@
 <template>
+<div class="container">
+  <TopHeader/>
+  <div id="nav">
+      <router-link to="/">Главная</router-link>
+      <router-link to="/film">Фильмы</router-link>
+      <router-link to="/serial">Сериалы</router-link>
+    </div>
   <router-view/>
+</div>
 </template>
 
 <script>
+import TopHeader from '@/components/TopHeader'
+export default {
+  components: {
+    TopHeader
+  }
+}
+
 </script>
 
 <style lang="less">
