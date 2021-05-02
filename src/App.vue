@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <TopHeader/>
+  <TopHeader />
   <div id="nav">
       <router-link to="/">Главная</router-link>
       <router-link to="/film">Фильмы</router-link>
@@ -13,8 +13,19 @@
 <script>
 import TopHeader from '@/components/TopHeader'
 export default {
+  data() {
+    return {
+      films: [],
+    }
+  },
   components: {
     TopHeader
+  },
+  async mounted() {
+    const response = await fetch(` https://api.kinopoisk.cloud/movies/1143242/token/d80e6e08a7474373ed25a732e28ee03c`);
+    const films = await response.json();
+    this.films = films;
+    console.log(this.films);
   }
 }
 

@@ -13,8 +13,11 @@
 				</form>
 			</div>
 			<div class="header__login">
-				<div class="header__login-name">{{ user.login }}</div>
-				<button class="header__login-btn btn" @click="showForm=!showForm">Войти</button>
+				<div class="header__login-wrp" v-if="userName">
+					<div class="header__login-name">{{ userName }}</div>
+					<button class="header__logout-btn" @click.prevent="logout">Выйти</button>
+				</div>
+				<button class="header__login-btn btn" v-else @click="showForm=!showForm">Войти</button>
 			</div>
 		</div>
 	</header>
@@ -24,7 +27,7 @@
 			<span class="login-form__title">Вход</span>
 			<input id="login" type="text" class="login-form__login" ref="login" name="login" placeholder="Логин" required>
 			<input id="pass" type="password" class="login-form__pass" ref="pass" name="pass" placeholder="Пароль" required>
-			<label class="login-form__lable-check" for="check"><input id="check" ref="check" type="checkbox" class="login-form__input-check" >Запомнить</label>
+			<label class="login-form__lable-check" for="check"><input id="check" ref="check" type="checkbox" class="login-form__input-check">Запомнить</label>
 			<button class="login-form__btn btn" type="submit">Войти</button>
 		</form>
 	</div>
@@ -36,10 +39,8 @@ export default {
 	data() {
 		return {
 			showForm: false,
-			user: {
-				login: '',
-				pass: ''
-			}
+			user: {},
+			userName: ''
 		}
 	},
 	methods: {
@@ -48,13 +49,32 @@ export default {
 				login: this.$refs.login.value,
 				pass: this.$refs.pass.value
 			}
-			console.log('user ', this.user)
+			if(this.user.login !== '' && this.user.login !== '' && this.$refs.check.checked === true) {
+				localStorage.setItem('user', JSON.stringify(this.user))
+				this.userName = this.user.login
+				this.showForm = false
+			} else {
+				console.log('error')
+			}
+		},
+		logout() {
+			this.userName = ''
+			localStorage.removeItem('user')
+		}
+	},
+	mounted() {
+		if(localStorage.getItem('user')) {
+			try {
+				this.user = JSON.parse(localStorage.getItem('user'))
+				this.userName = this.user.login
+			} catch(e) {
+				localStorage.removeItem('user')
+			}
 		}
 	}
 }
 </script>
 <style lang="less" scoped>
-
 .header{
 	padding: 30px 0;
 	&__wrp {
@@ -62,13 +82,28 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 	}
-	&__login {
+	&__login-wrp {
 		display: flex;
 		align-items: center;
 	}
 	&__login-name {
 		font-family: RubikMedium;
 		font-weight: 500;
+		margin-right: 15px;
+	}
+	&__logout-btn {
+		color: #E5261E;
+    background-color: transparent;
+    padding: 0;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		box-sizing: border-box;
+		font-family: RubikMedium;
+		font-weight: 500;
+		&:hover {
+			color: #CC221B;
+		}
 	}
 }
 .logo {
@@ -92,9 +127,15 @@ export default {
 		box-sizing: border-box;
 		border: none;
 		border-bottom: 1px solid;
-		font-family: RubikRegular;
-		font-weight: 400;
-		font-size: 16px;
+		font-family: RubikMedium;
+		font-weight: 500;
+		color: #333333;
+		&::placeholder {
+			font-family: RubikRegular;
+			font-weight: 400;
+			font-size: 16px;
+			color: #828282;
+		}
 	}
 	&__input:focus {
 		font-family: RubikMedium;
@@ -160,33 +201,34 @@ export default {
 		font-weight: 500;
 		font-size: 28px;
 	}
-	&__login {
+	&__login,
+	&__pass {
+		font-family: RubikMedium;
+		font-weight: 500;
+		background-color: #ffffff;
+		color: #333333;
 		margin-top: 25px;
 		width: 320px;
 		outline: none;
 		box-sizing: border-box;
 		border: none;
 		border-bottom: 1px solid;
+	}
+	&__pass::placeholder,
+	&__login::placeholder {
 		font-family: RubikRegular;
 		font-weight: 400;
 		font-size: 16px;
+		color: #828282;
+		background-color: #ffffff;
 	}
-	&__pass {
-		margin-top: 25px;
-		width: 320px;
-		outline: none;
-		box-sizing: border-box;
-		border: none;
-		border-bottom: 1px solid;
-		font-family: RubikRegular;
-		font-weight: 400;
-		font-size: 16px;  
-	}
+
 	&__input-check {
 		margin-right: 10px;
 	}
 	&__lable-check {
 		display: flex;
+		align-items: center;
 		margin-top: 20px;
 	}
 	&__btn {
