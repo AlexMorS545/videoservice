@@ -13,19 +13,8 @@
 <script>
 import TopHeader from '@/components/TopHeader'
 export default {
-  data() {
-    return {
-      films: [],
-    }
-  },
   components: {
     TopHeader
-  },
-  async mounted() {
-    const response = await fetch(` https://api.kinopoisk.cloud/movies/1143242/token/d80e6e08a7474373ed25a732e28ee03c`);
-    const films = await response.json();
-    this.films = films;
-    console.log(this.films);
   }
 }
 
@@ -34,15 +23,13 @@ export default {
 <style lang="less">
 @font-face {
   font-family: 'RubikMedium';
-  src: local('Rubik-Medium'),
-    url('~@/assets/fonts/Rubik-Medium.ttf');
+  src: local('Rubik-Medium'), url('~@/assets/fonts/Rubik-Medium.ttf');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'RubikRegular';
-  src: local('Rubik-Regular'),
-    url('~@/assets/fonts/Rubik-Regular.ttf');
+  src: local('Rubik-Regular'),  url('~@/assets/fonts/Rubik-Regular.ttf');
   font-weight: 400;
   font-style: normal;
 }

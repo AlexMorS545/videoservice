@@ -1,10 +1,13 @@
 <template>
-    <h1>Film page</h1>
+  <CatalogFilm />
 </template>
 
 <script>
-
+import CatalogFilm from '@/components/CatalogFilm'
 export default {
+  components: {
+    CatalogFilm
+  },
   name: 'Film'
 }
 </script>
