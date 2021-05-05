@@ -8,7 +8,7 @@ export default {
       const response = await fetch('http://api.tvmaze.com/shows/1/episodes')
       const films = await response.json()
       ctx.commit("updateFilms", films)
-      console.log(films)
+      console.log('films', films)
     }
   },
   mutations: {
@@ -22,3 +22,4 @@ export default {
     }
   }
 }
+//http://api.tvmaze.com/shows/1/episodes
