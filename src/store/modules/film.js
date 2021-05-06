@@ -5,7 +5,7 @@ export default {
   
   actions: {
     async getFilms(ctx) {
-      const response = await fetch('http://api.tvmaze.com/shows/1/episodes')
+      const response = await fetch('http://api.tvmaze.com/shows?page=1')
       const films = await response.json()
       ctx.commit("updateFilms", films)
       console.log('films', films)
@@ -22,4 +22,3 @@ export default {
     }
   }
 }
-//http://api.tvmaze.com/shows/1/episodes
