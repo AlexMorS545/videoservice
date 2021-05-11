@@ -3,7 +3,7 @@
     <div v-for="film in allFilms" :key="film.id" class="item">
       <img class="item__image" :src="film.image.medium">
       <span class="item__name">{{film.name}}</span>
-      <router-link class="item__link" :to="{name: 'About', params:{id: film.id}}">Подробнее о фильме</router-link>
+      <router-link class="item__link" :to="{name: 'About', params:{id: film.id}}">Подробнее</router-link>
       <!-- <div>{{ film.summary }}</div> -->
     </div>
   </div>
@@ -57,6 +57,15 @@ export default {
 
   &__name {
     margin: 20px 0;
+  }
+  &__link {
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #333333;
+    transition: color .2s ease;
+    &:hover {
+      color: #E5261E;
+    }
   }
 }
 </style>
