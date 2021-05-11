@@ -1,8 +1,8 @@
 <template>
-    <div class="about">
-      <h1>This is an serials page</h1>
-      <CatalogSerial/>
-    </div>
+  <div>
+    <h3 class="title-page">Каталог сериалов</h3>
+    <CatalogSerial/>
+  </div>
 </template>
 <script>
 import CatalogSerial from '@/components/CatalogSerial'

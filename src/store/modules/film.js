@@ -5,7 +5,7 @@ export default {
   
   actions: {
     async getFilms(ctx) {
-      const response = await fetch('http://api.tvmaze.com/shows?page=1')
+      const response = await fetch('http://api.tvmaze.com/shows')
       const films = await response.json()
       ctx.commit("updateFilms", films)
       console.log('films', films)

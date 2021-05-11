@@ -4,7 +4,7 @@ export default {
   },
   actions: {
     async getSerials(ctx) {
-      const response = await fetch('http://api.tvmaze.com/schedule')
+      const response = await fetch('http://api.tvmaze.com/schedule?country=RU')
       const serials = await response.json()
       ctx.commit("updateSerials", serials)
       console.log('serials',serials)

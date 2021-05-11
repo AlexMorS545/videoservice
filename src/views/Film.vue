@@ -1,5 +1,8 @@
 <template>
-  <CatalogFilm />
+  <div>
+    <h3 class="title-page">Каталог фильмов</h3>
+    <CatalogFilm />
+  </div>
 </template>
 
 <script>

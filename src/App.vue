@@ -89,4 +89,8 @@ body {
     }
   }
 }
+.title-page {
+  font-size: 26px;
+  margin: 20px auto;
+}
 </style>

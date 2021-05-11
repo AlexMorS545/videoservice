@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <h3 class="title-page">Каталог фильмов</h3>
-    <div class="wrap">
-      <div v-for="film in allFilms" :key="film.id" class="item">
-        <img class="item__image" :src="film.image.medium">
-        <span class="item__name">{{film.name}}</span>
-      </div>
+  <div class="wrap">
+    <div v-for="film in allFilms" :key="film.id" class="item">
+      <img class="item__image" :src="film.image.medium">
+      <span class="item__name">{{film.name}}</span>
+      <!-- <div>{{ film.summary }}</div> -->
     </div>
   </div>
 </template>
@@ -22,10 +20,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.title-page {
-  font-size: 26px;
-  margin: 0 auto;
-}
 .wrap {
   display: flex;
   flex-wrap: wrap;
@@ -34,16 +28,19 @@ export default {
   margin: 0 auto;
   height: 600px;
   overflow: auto;
-  background-color: #dfdfdf;
+  background-color: #ffffff;
+  padding: 20px;
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #333333;
+    background-color: #BDBDBD;
     border-radius: 5px;
+    border: 2px solid #f2f2f2;
   }
   &::-webkit-scrollbar-track {
-    background-color: #fdfdfd;
+    border-radius: 5px;
+    background-color: #f2f2f2;
   }
 }
 .item {
@@ -59,9 +56,6 @@ export default {
 
   &__name {
     margin: 20px 0;
-  }
-
-  &__image {
   }
 }
 </style>
