@@ -1,9 +1,10 @@
 <template>
   <div class="wrap">
-    <div v-for="serial in allSerials" :key="serial.id" class="item">
-      <span class="item__name">{{serial.name}}</span>
+    <a v-for="serial in allSerials" :key="serial.id" class="item">
       <img class="item__image" :src="serial.show.image.medium">
-    </div>
+      <span class="item__name">{{serial.show.name}}</span>
+      <a class="item__link" :href="`${serial.show.officialSite}`" target="_blank">Перейти на страницу</a>
+    </a>
   </div>
 </template>
 
@@ -44,17 +45,29 @@ export default {
 }
 .item {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
   border: 1px solid #333333;
-  background-color: #ffffff;
+  background-color: #f2f2f2;
   border-radius: 5px;
   margin-bottom: 20px;
-  max-width: 180px;
-  min-width: 0;
   cursor: pointer;
+  padding: 10px;
 
   &__name {
-    margin: 20px 0;
+    font-family: RubikMedium;
+    font-weight: 500;
+    font-size: 2rem;
+  }
+
+  &__image {
+    width: 70px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #333333;
   }
 }
 </style>

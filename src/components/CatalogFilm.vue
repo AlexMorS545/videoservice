@@ -3,6 +3,7 @@
     <div v-for="film in allFilms" :key="film.id" class="item">
       <img class="item__image" :src="film.image.medium">
       <span class="item__name">{{film.name}}</span>
+      <router-link class="item__link" :to="{name: 'About', params:{id: film.id}}">Подробнее о фильме</router-link>
       <!-- <div>{{ film.summary }}</div> -->
     </div>
   </div>
