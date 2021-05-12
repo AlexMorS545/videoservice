@@ -47,6 +47,7 @@ export default {
 .item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #333333;
   background-color: #ffffff;
   border-radius: 5px;

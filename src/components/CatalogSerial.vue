@@ -46,14 +46,14 @@ export default {
 .item {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   border: 1px solid #333333;
   background-color: #f2f2f2;
   border-radius: 5px;
   margin-bottom: 20px;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 30px;
 
   &__name {
     font-family: RubikMedium;
