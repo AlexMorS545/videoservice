@@ -7,9 +7,9 @@
 				<span class="logo__title">Видеосервис</span>
 			</router-link>
 			<div class="header__search">
-				<form class="search">
-						<input type="text" class="search__input" placeholder="поиск...">
-						<button type="submit" class="search__btn">Найти</button>
+				<form class="search" @submit.prevent="filtered(search)">
+					<input type="text" class="search__input" placeholder="поиск..." v-model="search">
+					<button type="submit" class="search__btn">Найти</button>
 				</form>
 			</div>
 			<div class="header__login">
@@ -36,13 +36,13 @@
 <script>
 export default {
 	name: 'TopHeader',
-	data() {
-		return {
-			showForm: false,
-			user: {},
-			userName: ''
-		}
-	},
+	data: () => ({
+		showForm: false,
+		user: {},
+		userName: '',
+		search: '',
+		filterFilms: []
+	}),
 	methods: {
 		registration() {
 			this.user = {
@@ -60,6 +60,11 @@ export default {
 		logout() {
 			this.userName = ''
 			localStorage.removeItem('user')
+		},
+		filtered(search) {
+			let regexp = new RegExp(search, 'i')
+			this.filterFilms = this.$store.getters.allFilms.filter(film => regexp.test(film.name))
+			console.log(this.filterFilms)
 		}
 	},
 	mounted() {

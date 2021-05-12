@@ -7,7 +7,6 @@ export default {
       const response = await fetch('http://api.tvmaze.com/shows')
       const films = await response.json()
       ctx.commit('updateFilms', films)
-      console.log(films);
     }
   },
   mutations: {

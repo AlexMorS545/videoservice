@@ -13,13 +13,13 @@
 </template>
 <script>
 export default {
-	data :() => ({
+	data: () => ({
 		description: ''
 	}),
 	computed: {
-		film() {
-			return this.$store.getters.filmById(+this.$route.params.id)
-		}
+		film: () => {
+      return this.$store.getters.filmById(+this.$route.params.id)
+    }
 	},
 	mounted() {
 		this.description = this.film.summary.replace(/<(.|\n)*?>/g, '')
