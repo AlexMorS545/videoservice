@@ -52,7 +52,6 @@ export default {
   background-color: #f2f2f2;
   border-radius: 5px;
   margin-bottom: 20px;
-  cursor: pointer;
   padding: 10px 30px;
 
   &__name {
@@ -68,6 +67,9 @@ export default {
   &__link {
     text-decoration: none;
     color: #333333;
+    &:hover {
+      color: #E5261E;
+    }
   }
 }
 </style>

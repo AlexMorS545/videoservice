@@ -3,8 +3,8 @@
     <div v-for="film in allFilms" :key="film.id" class="item">
       <img class="item__image" :src="film.image.medium">
       <span class="item__name">{{film.name}}</span>
-      <router-link class="item__link" :to="{name: 'About', params:{id: film.id}}">Подробнее</router-link>
-      <!-- <div>{{ film.summary }}</div> -->
+      <span class="item__desc">{{ film.summary }}</span>
+      <router-link class="item__link" :to="'/about/' + film.id">Подробнее</router-link>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'CatalogFilm',
   computed: mapGetters(['allFilms']),
-  methods: mapActions(['getFilms']),
+  methods:  mapActions(['getFilms']), 
   async mounted() {
     this.getFilms()
   }
@@ -25,7 +25,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   height: 600px;
   overflow: auto;
@@ -52,21 +52,43 @@ export default {
   background-color: #ffffff;
   border-radius: 5px;
   margin-bottom: 20px;
-  max-width: 180px;
+  max-width: 200px;
   min-width: 0;
+  position: relative;
   cursor: pointer;
-
+  &:hover .item__desc {
+    opacity: 1;
+    transform: scale(1);
+  }
   &__name {
-    margin: 20px 0;
+    font-family: RubikMedium;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 20px 0 15px;
   }
   &__link {
     text-decoration: none;
     margin-bottom: 10px;
     color: #333333;
+    font-size: 14px;
     transition: color .2s ease;
     &:hover {
       color: #E5261E;
     }
+  }
+  &__desc {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 82px;
+    color: #ffffff;
+    font-size: 14px;
+    background-color: rgba(51, 51, 51, 0.7);
+    opacity: 0;
+    overflow: hidden;
+    transition: all .3s ease;
+    transform: scale(0);
   }
 }
 </style>

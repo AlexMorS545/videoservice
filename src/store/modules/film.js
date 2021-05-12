@@ -7,7 +7,7 @@ export default {
       const response = await fetch('http://api.tvmaze.com/shows')
       const films = await response.json()
       ctx.commit('updateFilms', films)
-      console.log('films', films)
+      console.log(films);
     }
   },
   mutations: {
@@ -16,8 +16,8 @@ export default {
     }
   },
   getters: {
-    allFilms(state) {
-      return state.films
-    }
+    allFilms: state => state.films,
+    filmById: state => id => state.films.find(film => film.id === id),
+
   }
 }
