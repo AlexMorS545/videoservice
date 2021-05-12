@@ -1,9 +1,11 @@
 <template>
   <div class="wrap">
     <div v-for="film in allFilms" :key="film.id" class="item">
-      <img class="item__image" :src="film.image.medium">
+      <div class="img-wrp">
+        <img class="item__image" :src="film.image.medium" :alt="film.name">
+        <span class="item__desc">{{ film.summary.replace(/<(.|\n)*?>/g, '') }}</span>
+      </div>
       <span class="item__name">{{film.name}}</span>
-      <span class="item__desc">{{ film.summary }}</span>
       <router-link class="item__link" :to="'/about/' + film.id">Подробнее</router-link>
     </div>
   </div>
@@ -54,17 +56,15 @@ export default {
   margin-bottom: 20px;
   max-width: 200px;
   min-width: 0;
-  position: relative;
-  cursor: pointer;
-  &:hover .item__desc {
-    opacity: 1;
-    transform: scale(1);
-  }
   &__name {
     font-family: RubikMedium;
     font-weight: 500;
     font-size: 20px;
     margin: 20px 0 15px;
+  }
+  &__image {
+    display: block;
+    width: 100%;
   }
   &__link {
     text-decoration: none;
@@ -81,7 +81,7 @@ export default {
     top: 0;
     right: 0;
     left: 0;
-    bottom: 82px;
+    bottom: 0;
     color: #ffffff;
     font-size: 14px;
     background-color: rgba(51, 51, 51, 0.7);
@@ -89,6 +89,16 @@ export default {
     overflow: hidden;
     transition: all .3s ease;
     transform: scale(0);
+    padding: 10px 5px;
+    text-align: left;
+  }
+}
+.img-wrp {
+  cursor: pointer;
+  position: relative;
+  &:hover .item__desc {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 </style>

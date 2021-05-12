@@ -18,6 +18,5 @@ export default {
   getters: {
     allFilms: state => state.films,
     filmById: state => id => state.films.find(film => film.id === id),
-
   }
 }

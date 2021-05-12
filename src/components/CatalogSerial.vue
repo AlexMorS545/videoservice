@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <a v-for="serial in allSerials" :key="serial.id" class="item">
-      <img class="item__image" :src="serial.show.image.medium">
+      <img class="item__image" :src="serial.show.image.medium" :alt="serial.name">
       <span class="item__name">{{serial.show.name}}</span>
       <a class="item__link" :href="`${serial.show.officialSite}`" target="_blank">Перейти на страницу</a>
     </a>
