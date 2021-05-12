@@ -17,9 +17,9 @@ export default {
 		description: ''
 	}),
 	computed: {
-		film: () => {
+		film() {
       return this.$store.getters.filmById(+this.$route.params.id)
-    }
+		}
 	},
 	mounted() {
 		this.description = this.film.summary.replace(/<(.|\n)*?>/g, '')
