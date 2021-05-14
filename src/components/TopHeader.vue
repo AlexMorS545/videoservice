@@ -208,7 +208,7 @@ export default {
 	&__pass {
 		font-family: RubikMedium;
 		font-weight: 500;
-		background-color: #ffffff;
+		background-color: transparent;
 		color: #333333;
 		margin-top: 25px;
 		width: 320px;
