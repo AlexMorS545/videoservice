@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <img alt="Vue logo" src="../assets/image/icon/fire.png"> -->
-    <Index msg="My first project with vue-cli"/>
+    <Index msg="Видеосервис с иформацией о фильме"/>
   </div>
 </template>
 
