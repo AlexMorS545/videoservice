@@ -1,6 +1,7 @@
 export default {
   state: {
-    films: []
+    films: [],
+    filterFilms: []
   },
   actions: {
     async getFilms(ctx) {
@@ -12,13 +13,17 @@ export default {
   mutations: {
     updateFilms(state, films) {
       state.films = films
+      state.filterFilms = films
+    },
+    filtered(state, search) {
+      let regexp = new RegExp(search, 'i')
+      state.filterFilms = state.films.filter(film => regexp.test(film.name))
     }
   },
   getters: {
-    allFilms: state => state.films,
+    allFilms: state => state.filterFilms,
     filmById: state => id => state.films.find(film => film.id === id),
   }
 }
-
 // https://api.kinopoisk.cloud/movies/all/token/d80e6e08a7474373ed25a732e28ee03c
 // http://api.tvmaze.com/shows

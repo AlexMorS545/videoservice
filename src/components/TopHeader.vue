@@ -34,16 +34,17 @@
 </div>
 </template>
 <script>
+import {mapMutations} from 'vuex'
 export default {
 	name: 'TopHeader',
 	data: () => ({
 		showForm: false,
 		user: {},
 		userName: '',
-		search: '',
-		filterFilms: []
+		search: ''
 	}),
 	methods: {
+		...mapMutations(['filtered']),
 		registration() {
 			this.user = {
 				login: this.$refs.login.value,
@@ -60,11 +61,6 @@ export default {
 		logout() {
 			this.userName = ''
 			localStorage.removeItem('user')
-		},
-		filtered(search) {
-			let regexp = new RegExp(search, 'i')
-			this.filterFilms = this.$store.getters.allFilms.filter(film => regexp.test(film.name))
-			console.log(this.filterFilms)
 		}
 	},
 	mounted() {
@@ -135,6 +131,7 @@ export default {
 		font-family: RubikMedium;
 		font-weight: 500;
 		color: #333333;
+		background-color: transparent;
 		&::placeholder {
 			font-family: RubikRegular;
 			font-weight: 400;

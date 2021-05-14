@@ -16,7 +16,7 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'CatalogFilm',
   computed: mapGetters(['allFilms']),
-  methods:  mapActions(['getFilms']), 
+  methods:  mapActions(['getFilms']),
   async mounted() {
     this.getFilms()
   }
